@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:fitnessnote/gtl.dart';
@@ -26,7 +27,7 @@ class _MainPageState extends State<MainPage> {
   }
 
   void update() {
-    setWindowSize();
+    if(Platform.isWindows) setWindowSize();
   }
 
   @override
