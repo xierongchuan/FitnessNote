@@ -1,0 +1,48 @@
+name: fitnessnote
+description: Fitness Note
+
+publish_to: 'none'
+
+version: 0.1+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_launcher_icons: ^0.9.0
+  desktop_window: ^0.4.0
+  # shared_preferences: ^2.0.6
+  # moor_flutter: ^4.0.0
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: false
+  image_path: "assets/images/icons/Icon.png"
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/images/icons/
+
+  fonts:
+    - family: Poiret
+      fonts:
+        - asset: assets/fonts/PoiretOne-Regular.ttf
+    - family: Century
+      fonts:
+        - asset: assets/fonts/CenturyGothic-Regular.ttf
+    - family: Google
+      fonts:
+        - asset: assets/fonts/GoogleSans-Regular.ttf
