@@ -54,5 +54,5 @@ class _MainPageState extends State<MainPage> {
 }
 
 setWindowSize() async{
-  await DesktopWindow.setWindowSize(Size(400.0, 680.0));
+  await DesktopWindow.setWindowSize(Size(420.0, 740.0));
 }
