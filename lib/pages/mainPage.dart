@@ -22,7 +22,7 @@ class _MainPageState extends State<MainPage> {
     setWindowSize();
 
     super.initState();
-    timer = Timer.periodic(Duration(milliseconds: 10), (Timer t) => update());
+    timer = Timer.periodic(Duration(milliseconds: 11), (Timer t) => update());
   }
 
   void update() {
