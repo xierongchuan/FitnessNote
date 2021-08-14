@@ -5,7 +5,7 @@
 
 import 'package:flutter/material.dart';
 
-// Varibles
+// Variables
 
 final Color mBlue = Color(0xFF1389FD);
 final Color mBlueAlpha = Color(0x881389FD);

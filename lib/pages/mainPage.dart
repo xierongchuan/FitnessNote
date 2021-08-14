@@ -15,19 +15,18 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
 
+  bool isActiveTabBarText = true;
+
   late Timer timer;
 
   @override
   void initState() {
-
-    setWindowSize();
-
     super.initState();
     timer = Timer.periodic(Duration(milliseconds: 10), (Timer t) => update());
   }
 
   void update() {
-    if(Platform.isWindows) setWindowSize();
+    windowAction();
   }
 
   @override
@@ -41,7 +40,7 @@ class _MainPageState extends State<MainPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             
             children: [
-                mText20('Fitness Note', size: 25.0),
+              isActiveTabBarText ? mText20('Fitness Note', size: 25.0) : Container(),
             ]
 
           )
@@ -52,8 +51,23 @@ class _MainPageState extends State<MainPage> {
       )
     );
   }
-}
 
-setWindowSize() async{
-  await DesktopWindow.setWindowSize(Size(420.0, 740.0));
+  windowAction() async{
+    double width = MediaQuery.of(context).size.width ;
+    // double height = MediaQuery.of(context).size.height;
+    if (width > 420) {
+      setState(() {
+        isActiveTabBarText = true;
+      });
+    } else {
+      setState(() {
+        isActiveTabBarText = false;
+      });
+    }
+
+    if(Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+      DesktopWindow.setMinWindowSize(Size(470, 590));
+    }
+  }
+
 }
