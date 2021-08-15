@@ -53,7 +53,7 @@ class _MainPageState extends State<MainPage> {
   }
 
   void windowAction() async{
-    double width = MediaQuery.of(context).size.width ;
+    // double width = MediaQuery.of(context).size.width ;
     // double height = MediaQuery.of(context).size.height;
 
     // if (width > 420) {
