@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:fitnessnote/gtl.dart';
 
-import 'package:fitnessnote/pages/pageExtensions/workoutsExtension.dart';
+import 'subPage/workoutsSubPage.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({ Key? key }) : super(key: key);
@@ -46,7 +46,7 @@ class _MainPageState extends State<MainPage> {
           )
         ),
 
-        body: WorkoutsExtension(),
+        body: WorkoutsSubPage(),
 
       )
     );

@@ -3,14 +3,14 @@ import 'package:fitnessnote/gtl.dart';
 
 import 'package:fitnessnote/workout.dart';
 
-class WorkoutsExtension extends StatefulWidget {
-  const WorkoutsExtension({Key? key}) : super(key: key);
+class WorkoutsSubPage extends StatefulWidget {
+  const WorkoutsSubPage({Key? key}) : super(key: key);
 
   @override
-  _WorkoutsExtensionState createState() => _WorkoutsExtensionState();
+  _WorkoutsSubPageState createState() => _WorkoutsSubPageState();
 }
 
-class _WorkoutsExtensionState extends State<WorkoutsExtension> {
+class _WorkoutsSubPageState extends State<WorkoutsSubPage> {
   final workouts = <Workout>[
     Workout(
         title: 'Test1',
@@ -91,6 +91,47 @@ class _WorkoutsExtensionState extends State<WorkoutsExtension> {
 
   @override
   Widget build(BuildContext context) {
+
+    Widget _subTitle(BuildContext context, Workout workout) {
+      var color = mLightGrey;
+      double indicatorLevel = 0;
+
+      switch (workout.level) {
+        case 'Beginner':
+          color = mGreen;
+          indicatorLevel = 0.33;
+          break;
+        case 'Intermediate':
+          color = mYellow;
+          indicatorLevel = 0.66;
+          break;
+        case 'Advanced':
+          color = mRed;
+          indicatorLevel = 1.0;
+          break;
+      }
+
+      return Row(
+        children: <Widget>[
+          Expanded(
+            flex: 2,
+            child: LinearProgressIndicator(
+              backgroundColor: mDarkGrey,
+              value: indicatorLevel,
+              valueColor: AlwaysStoppedAnimation(color),
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            flex: 3,
+            child: mText15(workout.level),
+          ),
+        ],
+      );
+    }
+
     return Container(
       child: Container(
         // padding: EdgeInsets.fromLTRB(0, 4, 0, 0),
@@ -116,7 +157,7 @@ class _WorkoutsExtensionState extends State<WorkoutsExtension> {
                   ),
                   title: mText20(workouts[i].title, fontWeight: FontWeight.bold),
                   trailing: mIcon(Icons.keyboard_arrow_right),
-                  subtitle: subTitle(context, workouts[i]),
+                  subtitle: _subTitle(context, workouts[i]),
                 ),
               ),
             );
@@ -125,44 +166,4 @@ class _WorkoutsExtensionState extends State<WorkoutsExtension> {
       )
     );
   }
-}
-
-Widget subTitle(BuildContext context, Workout workout) {
-  var color = mLightGrey;
-  double indicatorLevel = 0;
-
-  switch (workout.level) {
-    case 'Beginner':
-      color = mGreen;
-      indicatorLevel = 0.33;
-      break;
-    case 'Intermediate':
-      color = mYellow;
-      indicatorLevel = 0.66;
-      break;
-    case 'Advanced':
-      color = mRed;
-      indicatorLevel = 1.0;
-      break;
-  }
-
-  return Row(
-    children: <Widget>[
-      Expanded(
-        flex: 2,
-        child: LinearProgressIndicator(
-          backgroundColor: mDarkGrey,
-          value: indicatorLevel,
-          valueColor: AlwaysStoppedAnimation(color),
-        ),
-      ),
-      SizedBox(
-        width: 10,
-      ),
-      Expanded(
-        flex: 3,
-        child: mText15(workout.level),
-      ),
-    ],
-  );
 }
