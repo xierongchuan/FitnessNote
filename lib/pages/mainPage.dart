@@ -52,18 +52,19 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  windowAction() async{
+  void windowAction() async{
     double width = MediaQuery.of(context).size.width ;
     // double height = MediaQuery.of(context).size.height;
-    if (width > 420) {
-      setState(() {
-        isActiveTabBarText = true;
-      });
-    } else {
-      setState(() {
-        isActiveTabBarText = false;
-      });
-    }
+
+    // if (width > 420) {
+    //   setState(() {
+    //     isActiveTabBarText = true;
+    //   });
+    // } else {
+    //   setState(() {
+    //     isActiveTabBarText = false;
+    //   });
+    // }
 
     if(Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
       DesktopWindow.setMinWindowSize(Size(470, 590));

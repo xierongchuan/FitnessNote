@@ -37,14 +37,65 @@ class _WorkoutsExtensionState extends State<WorkoutsExtension> {
         author: 'Max5',
         description: 'Lorem ipsum5',
         level: 'Intermediate'),
+    Workout(
+        title: 'Test5',
+        author: 'Max5',
+        description: 'Lorem ipsum5',
+        level: 'Intermediate'),
+    Workout(
+        title: 'Test5',
+        author: 'Max5',
+        description: 'Lorem ipsum5',
+        level: 'Intermediate'),
+    Workout(
+        title: 'Test5',
+        author: 'Max5',
+        description: 'Lorem ipsum5',
+        level: 'Intermediate'),
+    Workout(
+        title: 'Test5',
+        author: 'Max5',
+        description: 'Lorem ipsum5',
+        level: 'Intermediate'),
+    Workout(
+        title: 'Test5',
+        author: 'Max5',
+        description: 'Lorem ipsum5',
+        level: 'Intermediate'),
+    Workout(
+        title: 'Test5',
+        author: 'Max5',
+        description: 'Lorem ipsum5',
+        level: 'Intermediate'),
+    Workout(
+        title: 'Test5',
+        author: 'Max5',
+        description: 'Lorem ipsum5',
+        level: 'Intermediate'),
+    Workout(
+        title: 'Test5',
+        author: 'Max5',
+        description: 'Lorem ipsum5',
+        level: 'Intermediate'),
+    Workout(
+        title: 'Test5',
+        author: 'Max5',
+        description: 'Lorem ipsum5',
+        level: 'Intermediate'),
+    Workout(
+        title: 'Test5',
+        author: 'Max5',
+        description: 'Lorem ipsum5',
+        level: 'Intermediate'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Container(
-        margin: EdgeInsets.fromLTRB(0, 4, 0, 0),
+        // padding: EdgeInsets.fromLTRB(0, 4, 0, 0),
         child: ListView.builder(
+          padding: EdgeInsets.fromLTRB(0, 4, 0, 4),
           itemCount: workouts.length,
           itemBuilder: (context, i) {
             return Card(
@@ -58,9 +109,10 @@ class _WorkoutsExtensionState extends State<WorkoutsExtension> {
                     padding: EdgeInsets.only(right: 10),
                     child: mIcon(Icons.fitness_center, size: 30),
                     decoration: BoxDecoration(
-                        border: Border(
-                      right: BorderSide(width: 1, color: mLightGrey),
-                    )),
+                      border: Border(
+                        right: BorderSide(width: 1, color: mLightGrey),
+                      )
+                    ),
                   ),
                   title: mText20(workouts[i].title, fontWeight: FontWeight.bold),
                   trailing: mIcon(Icons.keyboard_arrow_right),
@@ -97,7 +149,7 @@ Widget subTitle(BuildContext context, Workout workout) {
   return Row(
     children: <Widget>[
       Expanded(
-        flex: 1,
+        flex: 2,
         child: LinearProgressIndicator(
           backgroundColor: mDarkGrey,
           value: indicatorLevel,
