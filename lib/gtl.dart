@@ -7,36 +7,92 @@ import 'package:flutter/material.dart';
 
 // Variables
 
-final Color mBlue = Color(0xFF1389FD);
-final Color mBlueAlpha = Color(0x881389FD);
-final Color mRed = Color(0xFFA80000);
-final Color mRedAlpha = Color(0x88A80000);
-final Color mGreen = Color(0xFF359D35);
-final Color mGreenAlpha = Color(0x88359D35);
-final Color mGrey = Color(0xFF3D3D3D);
-final Color mGreyAlpha = Color(0x883D3D3D);
-final Color mDarkGrey = Color(0xFF2E2E2E);
-final Color mDarkGreyAlpha = Color(0x882E2E2E);
-final Color mLightGrey = Color(0xFF828282);
-final Color mLightGreyAlpha = Color(0x88828282);
-final Color mOrange = Color(0xFFEB4700);
-final Color mLightOrange = Color(0xFFEB6B00);
-final Color mYellow = Color(0xFFDDCC00);
-final Color mLightYellow = Color(0xFFEBE15D);
-final Color mWhite = Color(0xFFFFFFFF);
-final Color mWhiteAlpha = Color(0x88FFFFFF);
+const Color mBlue = Color(0xFF1389FD);
+const Color mBlueAlpha = Color(0x881389FD);
+const Color mRed = Color(0xFFA80000);
+const Color mRedAlpha = Color(0x88A80000);
+const Color mGreen = Color(0xFF359D35);
+const Color mGreenAlpha = Color(0x88359D35);
+const Color mGrey = Color(0xFF3D3D3D);
+const Color mGreyAlpha = Color(0x883D3D3D);
+const Color mDarkGrey = Color(0xFF2E2E2E);
+const Color mDarkGreyAlpha = Color(0x882E2E2E);
+const Color mLightGrey = Color(0xFF828282);
+const Color mLightGreyAlpha = Color(0x88828282);
+const Color mOrange = Color(0xFFEB4700);
+const Color mLightOrange = Color(0xFFEB6B00);
+const Color mYellow = Color(0xFFDDCC00);
+const Color mLightYellow = Color(0xFFEBE15D);
+const Color mWhite = Color(0xFFFFFFFF);
+const Color mWhiteAlpha = Color(0x88FFFFFF);
+const Color mTransparent = Color(0x00FF00FF);
 
 // Functions
 
-Widget mIcon(
+OutlinedButton mButton(
+    {
+      required Widget child,
+      required void onPressed(),
+      Color foregroundColor = mGreen,
+      Color overlayColor = mLightGreyAlpha,
+    }
+    ) {
+  return OutlinedButton(
+    style: ButtonStyle(
+      foregroundColor: MaterialStateProperty.all<Color>(foregroundColor),
+      overlayColor: MaterialStateProperty.all<Color>(overlayColor),
+    ),
+    onPressed: onPressed,
+    child: child
+  );
+}
+
+Widget mTextField(
+    {
+      required Icon icon,
+      required String hint,
+      required TextEditingController controller,
+      bool obscure = false
+    }
+    ) {
+  return Container(
+    padding: EdgeInsets.only(left: 20, right: 20),
+    child: TextField(
+      controller: controller,
+      obscureText: obscure,
+      style: TextStyle(
+        color: mWhite,
+      ),
+      decoration: InputDecoration(
+        labelText: hint,
+        labelStyle: TextStyle(color: mWhite),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12.5)),
+          borderSide: BorderSide(color: mBlue, width: 3),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(30)),
+          borderSide: BorderSide(color: mBlue, width: 3),
+        ),
+        // hintText: hint,
+        prefixIcon: Padding(
+          padding: EdgeInsets.only(left: 10, right: 10,),
+          child: icon,
+        ),
+      )
+    ),
+  );
+}
+
+Icon mIcon(
     IconData? icon,
     {
-      Color color = Colors.white,
+      Color color = mWhite,
       double size = 24.0
     }
     ) {
   return Icon(
-    icon ?? Icons.ad_units,
+    icon ?? Icons.account_box,
     color: color,
     size: size,
   );
@@ -47,8 +103,8 @@ Widget mText100(
     {
       double size = 100.0,
       String family = 'Google',
-      Color color = Colors.white,
-      Color backgroundColor = Colors.transparent,
+      Color color = mWhite,
+      Color backgroundColor = mTransparent,
       FontWeight fontWeight = FontWeight.normal
     }
     ) {
@@ -69,8 +125,8 @@ Widget mText90(
     {
       double size = 90.0,
       String family = 'Google',
-      Color color = Colors.white,
-      Color backgroundColor = Colors.transparent,
+      Color color = mWhite,
+      Color backgroundColor = mTransparent,
       FontWeight fontWeight = FontWeight.normal
     }
     ) {
@@ -91,8 +147,8 @@ Widget mText80(
     {
       double size = 80.0,
       String family = 'Google',
-      Color color = Colors.white,
-      Color backgroundColor = Colors.transparent,
+      Color color = mWhite,
+      Color backgroundColor = mTransparent,
       FontWeight fontWeight = FontWeight.normal
     }
     ) {
@@ -113,8 +169,8 @@ Widget mText70(
     {
       double size = 70.0,
       String family = 'Google',
-      Color color = Colors.white,
-      Color backgroundColor = Colors.transparent,
+      Color color = mWhite,
+      Color backgroundColor = mTransparent,
       FontWeight fontWeight = FontWeight.normal
     }
     ) {
@@ -135,8 +191,8 @@ Widget mText60(
     {
       double size = 60.0,
       String family = 'Google',
-      Color color = Colors.white,
-      Color backgroundColor = Colors.transparent,
+      Color color = mWhite,
+      Color backgroundColor = mTransparent,
       FontWeight fontWeight = FontWeight.normal
     }
     ) {
@@ -157,8 +213,8 @@ Widget mText50(
     {
       double size = 50.0,
       String family = 'Google',
-      Color color = Colors.white,
-      Color backgroundColor = Colors.transparent,
+      Color color = mWhite,
+      Color backgroundColor = mTransparent,
       FontWeight fontWeight = FontWeight.normal
     }
     ) {
@@ -179,8 +235,8 @@ Widget mText40(
     {
       double size = 40.0,
       String family = 'Google',
-      Color color = Colors.white,
-      Color backgroundColor = Colors.transparent,
+      Color color = mWhite,
+      Color backgroundColor = mTransparent,
       FontWeight fontWeight = FontWeight.normal
     }
     ) {
@@ -201,8 +257,8 @@ Widget mText30(
     {
       double size = 30.0,
       String family = 'Google',
-      Color color = Colors.white,
-      Color backgroundColor = Colors.transparent,
+      Color color = mWhite,
+      Color backgroundColor = mTransparent,
       FontWeight fontWeight = FontWeight.normal
     }
     ) {
@@ -223,8 +279,8 @@ Widget mText20(
     {
       double size = 20.0,
       String family = 'Google',
-      Color color = Colors.white,
-      Color backgroundColor = Colors.transparent,
+      Color color = mWhite,
+      Color backgroundColor = mTransparent,
       FontWeight fontWeight = FontWeight.normal
     }
     ) {
@@ -245,8 +301,8 @@ Widget mText10(
     {
       double size = 10.0,
       String family = 'Google',
-      Color color = Colors.white,
-      Color backgroundColor = Colors.transparent,
+      Color color = mWhite,
+      Color backgroundColor = mTransparent,
       FontWeight fontWeight = FontWeight.normal
     }
     ) {
@@ -267,8 +323,8 @@ Widget mText15(
     {
       double size = 15.0,
       String family = 'Google',
-      Color color = Colors.white,
-      Color backgroundColor = Colors.transparent,
+      Color color = mWhite,
+      Color backgroundColor = mTransparent,
       FontWeight fontWeight = FontWeight.normal
     }
     ) {
@@ -289,8 +345,8 @@ Widget mText5(
     {
       double size = 5.0,
       String family = 'Google',
-      Color color = Colors.white,
-      Color backgroundColor = Colors.transparent,
+      Color color = mWhite,
+      Color backgroundColor = mTransparent,
       FontWeight fontWeight = FontWeight.normal
     }
     ) {

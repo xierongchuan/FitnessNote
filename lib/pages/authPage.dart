@@ -1,6 +1,5 @@
-import 'package:fitnessnote/gtl.dart';
-
 import 'package:flutter/material.dart';
+import 'package:fitnessnote/gtl.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -10,6 +9,10 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
+
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
 
@@ -30,11 +33,21 @@ class _AuthPageState extends State<AuthPage> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 10,),
-              child: mText20('Email'),
+              child: mTextField(
+                icon: mIcon(Icons.email),
+                hint: "Email",
+                controller: _emailController,
+                obscure: false,
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 20),
-              child: mText20('Password'),
+              child: mTextField(
+                icon: mIcon(Icons.lock),
+                hint: "Password",
+                controller: _passwordController,
+                obscure: true,
+              ),
             ),
             SizedBox(height: 10,),
             Padding(
@@ -42,7 +55,10 @@ class _AuthPageState extends State<AuthPage> {
               child: Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width,
-                child: mText20(label),
+                child: mButton(
+                  child: mText20('Login'),
+                  onPressed: (){print('gg');},
+                ),
               ),
             ),
           ],
