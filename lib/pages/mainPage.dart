@@ -17,12 +17,10 @@ class _MainPageState extends State<MainPage> {
 
   bool isActiveTabBarText = true;
 
-  late Timer timer;
-
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(Duration(milliseconds: 10), (Timer t) => update());
+    update();
   }
 
   void update() {

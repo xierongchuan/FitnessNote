@@ -4,6 +4,7 @@
 /// Author - Tulenov Temur Pulatovich
 
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 // Variables
 
@@ -28,6 +29,11 @@ const Color mWhiteAlpha = Color(0x88FFFFFF);
 const Color mTransparent = Color(0x00FF00FF);
 
 // Functions
+
+// void mSleep(int milliseconds) {
+//   Timer t;
+//   print();
+// }
 
 OutlinedButton mButton(
     {

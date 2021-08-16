@@ -13,6 +13,10 @@ class _AuthPageState extends State<AuthPage> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
+  String _email = '';
+  String _password = '';
+  bool showLogin = true;
+
   @override
   Widget build(BuildContext context) {
 
@@ -56,8 +60,8 @@ class _AuthPageState extends State<AuthPage> {
                 height: 50,
                 width: MediaQuery.of(context).size.width,
                 child: mButton(
-                  child: mText20('Login'),
-                  onPressed: (){print('gg');},
+                  child: mText20(label),
+                  onPressed: func,
                 ),
               ),
             ),
@@ -66,12 +70,20 @@ class _AuthPageState extends State<AuthPage> {
       );
     }
 
+    void _loginOrRegisterUser() {
+      _email = _emailController.text;
+      _password = _passwordController.text;
+
+      _emailController.clear();
+      _passwordController.clear();
+    }
+
     return Scaffold(
       backgroundColor: mGrey,
       body: Column(
         children: <Widget>[
           _logo(),
-          _form('Login', (){}),
+          _form('Login or Register', _loginOrRegisterUser),
         ],
       ),
     );
