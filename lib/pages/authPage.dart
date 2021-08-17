@@ -83,7 +83,13 @@ class _AuthPageState extends State<AuthPage> {
       body: Column(
         children: <Widget>[
           _logo(),
-          _form('Login or Register', _loginOrRegisterUser),
+          (
+            showLogin ? Column(
+              children: <Widget>[
+                _form('Login', _loginOrRegisterUser),
+              ],
+            ),
+          ),
         ],
       ),
     );
