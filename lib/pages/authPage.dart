@@ -22,7 +22,7 @@ class _AuthPageState extends State<AuthPage> {
 
     Widget _logo() {
       return Padding(
-        padding: EdgeInsets.only(top: 100),
+        padding: EdgeInsets.only(top: 70),
         child: Container(
           child: Align(
             child: mText30('Fitness Note', fontWeight: FontWeight.bold),
@@ -87,8 +87,40 @@ class _AuthPageState extends State<AuthPage> {
             showLogin ? Column(
               children: <Widget>[
                 _form('Login', _loginOrRegisterUser),
+                Padding(
+                  padding: EdgeInsets.only(top: 20),
+                  child: GestureDetector(
+                    child: mText10('Not registered yet? Register', underline: true),
+                    onTap: () {
+                      setState(() {
+                        showLogin = false;
+                      });
+                    },
+                  ),
+                ),
               ],
-            ),
+            )
+            : Column(
+              children: <Widget>[
+                _form('Register', _loginOrRegisterUser),
+                AnimatedPadding(
+                  padding: EdgeInsets.only(top: 20),
+                  curve: Curves.ease, 
+                  duration: Duration(milliseconds: 690),
+                  child: Padding(
+                    padding: EdgeInsets.all(1),
+                    child: GestureDetector(
+                      child: mText10('Already registered yet? Login', underline: true),
+                      onTap: () {
+                        setState(() {
+                          showLogin = true;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            )
           ),
         ],
       ),

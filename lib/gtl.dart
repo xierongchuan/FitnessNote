@@ -108,6 +108,7 @@ Widget mText100(
     String? text,
     {
       double size = 100.0,
+      bool underline = false,
       String family = 'Google',
       Color color = mWhite,
       Color backgroundColor = mTransparent,
@@ -117,6 +118,7 @@ Widget mText100(
   return Text(
     text ?? '',
     style: TextStyle(
+      decoration: (underline ? TextDecoration.underline : TextDecoration.none),
       fontFamily: family,
       fontSize: size,
       color: color,
@@ -130,6 +132,7 @@ Widget mText90(
     String? text,
     {
       double size = 90.0,
+      bool underline = false,
       String family = 'Google',
       Color color = mWhite,
       Color backgroundColor = mTransparent,
@@ -139,6 +142,7 @@ Widget mText90(
   return Text(
     text ?? '',
     style: TextStyle(
+      decoration: (underline ? TextDecoration.underline : TextDecoration.none),
       fontFamily: family,
       fontSize: size,
       color: color,
@@ -152,6 +156,7 @@ Widget mText80(
     String? text,
     {
       double size = 80.0,
+      bool underline = false,
       String family = 'Google',
       Color color = mWhite,
       Color backgroundColor = mTransparent,
@@ -161,6 +166,7 @@ Widget mText80(
   return Text(
     text ?? '',
     style: TextStyle(
+      decoration: (underline ? TextDecoration.underline : TextDecoration.none),
       fontFamily: family,
       fontSize: size,
       color: color,
@@ -174,6 +180,7 @@ Widget mText70(
     String? text,
     {
       double size = 70.0,
+      bool underline = false,
       String family = 'Google',
       Color color = mWhite,
       Color backgroundColor = mTransparent,
@@ -183,6 +190,7 @@ Widget mText70(
   return Text(
     text ?? '',
     style: TextStyle(
+      decoration: (underline ? TextDecoration.underline : TextDecoration.none),
       fontFamily: family,
       fontSize: size,
       color: color,
@@ -196,6 +204,7 @@ Widget mText60(
     String? text,
     {
       double size = 60.0,
+      bool underline = false,
       String family = 'Google',
       Color color = mWhite,
       Color backgroundColor = mTransparent,
@@ -205,6 +214,7 @@ Widget mText60(
   return Text(
     text ?? '',
     style: TextStyle(
+      decoration: (underline ? TextDecoration.underline : TextDecoration.none),
       fontFamily: family,
       fontSize: size,
       color: color,
@@ -218,6 +228,7 @@ Widget mText50(
     String? text,
     {
       double size = 50.0,
+      bool underline = false,
       String family = 'Google',
       Color color = mWhite,
       Color backgroundColor = mTransparent,
@@ -227,6 +238,7 @@ Widget mText50(
   return Text(
     text ?? '',
     style: TextStyle(
+      decoration: (underline ? TextDecoration.underline : TextDecoration.none),
       fontFamily: family,
       fontSize: size,
       color: color,
@@ -240,6 +252,7 @@ Widget mText40(
     String? text,
     {
       double size = 40.0,
+      bool underline = false,
       String family = 'Google',
       Color color = mWhite,
       Color backgroundColor = mTransparent,
@@ -249,6 +262,7 @@ Widget mText40(
   return Text(
     text ?? '',
     style: TextStyle(
+      decoration: (underline ? TextDecoration.underline : TextDecoration.none),
       fontFamily: family,
       fontSize: size,
       color: color,
@@ -262,6 +276,7 @@ Widget mText30(
     String? text,
     {
       double size = 30.0,
+      bool underline = false,
       String family = 'Google',
       Color color = mWhite,
       Color backgroundColor = mTransparent,
@@ -271,6 +286,7 @@ Widget mText30(
   return Text(
     text ?? '',
     style: TextStyle(
+      decoration: (underline ? TextDecoration.underline : TextDecoration.none),
       fontFamily: family,
       fontSize: size,
       color: color,
@@ -284,6 +300,7 @@ Widget mText20(
     String? text,
     {
       double size = 20.0,
+      bool underline = false,
       String family = 'Google',
       Color color = mWhite,
       Color backgroundColor = mTransparent,
@@ -293,6 +310,7 @@ Widget mText20(
   return Text(
     text ?? '',
     style: TextStyle(
+      decoration: (underline ? TextDecoration.underline : TextDecoration.none),
       fontFamily: family,
       fontSize: size,
       color: color,
@@ -306,6 +324,7 @@ Widget mText10(
     String? text,
     {
       double size = 10.0,
+      bool underline = false,
       String family = 'Google',
       Color color = mWhite,
       Color backgroundColor = mTransparent,
@@ -315,6 +334,7 @@ Widget mText10(
   return Text(
     text ?? '',
     style: TextStyle(
+      decoration: (underline ? TextDecoration.underline : TextDecoration.none),
       fontFamily: family,
       fontSize: size,
       color: color,
@@ -328,6 +348,7 @@ Widget mText15(
     String? text,
     {
       double size = 15.0,
+      bool underline = false,
       String family = 'Google',
       Color color = mWhite,
       Color backgroundColor = mTransparent,
@@ -337,6 +358,7 @@ Widget mText15(
   return Text(
     text ?? '',
     style: TextStyle(
+      decoration: (underline ? TextDecoration.underline : TextDecoration.none),
       fontFamily: family,
       fontSize: size,
       color: color,
@@ -350,6 +372,7 @@ Widget mText5(
     String? text,
     {
       double size = 5.0,
+      bool underline = false,
       String family = 'Google',
       Color color = mWhite,
       Color backgroundColor = mTransparent,
@@ -359,6 +382,7 @@ Widget mText5(
   return Text(
     text ?? '',
     style: TextStyle(
+      decoration: (underline ? TextDecoration.underline : TextDecoration.none),
       fontFamily: family,
       fontSize: size,
       color: color,
