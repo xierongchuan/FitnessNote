@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fitnessnote/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fitnessnote/gtl.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -17,12 +20,14 @@ class _AuthPageState extends State<AuthPage> {
   String _password = '';
   bool showLogin = true;
 
+  AuthService _authService = AuthService();
+
   @override
   Widget build(BuildContext context) {
 
     Widget _logo() {
       return Padding(
-        padding: EdgeInsets.only(top: 70),
+        padding: EdgeInsets.only(top: 75),
         child: Container(
           child: Align(
             child: mText30('Fitness Note', fontWeight: FontWeight.bold),
@@ -33,6 +38,7 @@ class _AuthPageState extends State<AuthPage> {
 
     Widget _form(String label, void func()) {
       return Container(
+        padding: EdgeInsets.only(top: 40),
         child: Column(
           children: <Widget>[
             Padding(
@@ -70,12 +76,48 @@ class _AuthPageState extends State<AuthPage> {
       );
     }
 
-    void _loginOrRegisterUser() {
+    void _logInUser() async {
       _email = _emailController.text;
       _password = _passwordController.text;
 
-      _emailController.clear();
-      _passwordController.clear();
+      if (_email.isEmpty || _password.isEmpty) return; // Если условие не выполнено те код дальше не выполнится в этой функции
+
+      User user = await _authService.logInWithEmailAndPassword(_email.trim(), _password.trim());
+      if(user == null) {
+        Fluttertoast.showToast(
+          msg: "Can't Log In you! Please check you email/password.",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 20.0
+        );
+      }else {
+        _emailController.clear();
+        _passwordController.clear();
+      }
+    }
+
+    void _registerUser() async {
+      _email = _emailController.text;
+      _password = _passwordController.text;
+
+      if (_email.isEmpty || _password.isEmpty) return; // Если условие не выполнено те код дальше не выполнится в этой функции
+
+      User user = await _authService.logInWithEmailAndPassword(_email.trim(), _password.trim());
+      if(user == null) {
+        Fluttertoast.showToast(
+          msg: "Can't Log In you! Please check you email/password.",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 20.0
+        );
+      }else {
+        _emailController.clear();
+        _passwordController.clear();
+      }
     }
 
     return Scaffold(
@@ -86,11 +128,11 @@ class _AuthPageState extends State<AuthPage> {
           (
             showLogin ? Column(
               children: <Widget>[
-                _form('Login', _loginOrRegisterUser),
+                _form('Log In', _logInUser),
                 Padding(
                   padding: EdgeInsets.only(top: 20),
                   child: GestureDetector(
-                    child: mText10('Not registered yet? Register', underline: true),
+                    child: mText15('Not registered yet? Register', underline: true),
                     onTap: () {
                       setState(() {
                         showLogin = false;
@@ -102,21 +144,16 @@ class _AuthPageState extends State<AuthPage> {
             )
             : Column(
               children: <Widget>[
-                _form('Register', _loginOrRegisterUser),
-                AnimatedPadding(
+                _form('Register', _registerUser),
+                Padding(
                   padding: EdgeInsets.only(top: 20),
-                  curve: Curves.ease, 
-                  duration: Duration(milliseconds: 690),
-                  child: Padding(
-                    padding: EdgeInsets.all(1),
-                    child: GestureDetector(
-                      child: mText10('Already registered yet? Login', underline: true),
-                      onTap: () {
-                        setState(() {
-                          showLogin = true;
-                        });
-                      },
-                    ),
+                  child: GestureDetector(
+                    child: mText15('Already registered yet? Log In', underline: true),
+                    onTap: () {
+                      setState(() {
+                        showLogin = true;
+                      });
+                    },
                   ),
                 ),
               ],

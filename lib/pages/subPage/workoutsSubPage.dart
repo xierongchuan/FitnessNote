@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fitnessnote/gtl.dart';
 
-import 'package:fitnessnote/workout.dart';
+import 'package:fitnessnote/domains/workout.dart';
 
 class WorkoutsSubPage extends StatefulWidget {
   const WorkoutsSubPage({Key? key}) : super(key: key);
