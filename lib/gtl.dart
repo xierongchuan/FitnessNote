@@ -35,21 +35,37 @@ const Color mTransparent = Color(0x00FF00FF);
 //   print();
 // }
 
-OutlinedButton mButton(
+Widget mEmptyContainer() {
+  return SizedBox.shrink();
+}
+
+Widget mButton(
     {
       required Widget child,
       required void onPressed(),
       Color foregroundColor = mGreen,
       Color overlayColor = mLightGreyAlpha,
+      double paddingTop = 0,
+      double paddingBottom = 0,
+      double paddingRight = 0,
+      double paddingLeft = 0,
     }
     ) {
-  return OutlinedButton(
-    style: ButtonStyle(
-      foregroundColor: MaterialStateProperty.all<Color>(foregroundColor),
-      overlayColor: MaterialStateProperty.all<Color>(overlayColor),
+  return Padding( 
+    padding: EdgeInsets.only(
+      top: paddingTop,
+      bottom: paddingBottom,
+      right: paddingRight,
+      left: paddingLeft,
     ),
-    onPressed: onPressed,
-    child: child
+    child: OutlinedButton(
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.all<Color>(foregroundColor),
+        overlayColor: MaterialStateProperty.all<Color>(overlayColor),
+      ),
+      onPressed: onPressed,
+      child: child,
+    ),
   );
 }
 

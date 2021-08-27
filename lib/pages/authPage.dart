@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:fitnessnote/domains/person.dart';
 import 'package:fitnessnote/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fitnessnote/gtl.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -82,15 +84,15 @@ class _AuthPageState extends State<AuthPage> {
 
       if (_email.isEmpty || _password.isEmpty) return; // Если условие не выполнено те код дальше не выполнится в этой функции
 
-      User user = await _authService.logInWithEmailAndPassword(_email.trim(), _password.trim());
+      Person? user = await _authService.logInWithEmailAndPassword(_email.trim(), _password.trim());
       if(user == null) {
-        Fluttertoast.showToast(
-          msg: "Can't Log In you! Please check you email/password.",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 20.0
+        showToast("Can't Log In you! Please check you email/password",
+          context: context,
+          animation: StyledToastAnimation.fade,
+          reverseAnimation: StyledToastAnimation.fade,
+          position: StyledToastPosition.center,
+          backgroundColor: mRed,
+          duration: Duration(seconds: 6),
         );
       }else {
         _emailController.clear();
@@ -104,16 +106,16 @@ class _AuthPageState extends State<AuthPage> {
 
       if (_email.isEmpty || _password.isEmpty) return; // Если условие не выполнено те код дальше не выполнится в этой функции
 
-      User user = await _authService.logInWithEmailAndPassword(_email.trim(), _password.trim());
+    Person? user = await _authService.registerWithEmailAndPassword(_email.trim(), _password.trim());
       if(user == null) {
-        Fluttertoast.showToast(
-          msg: "Can't Log In you! Please check you email/password.",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 20.0
-        );
+      showToast("Can't Register you! Please check you email/password. \nPassword should be at least 6 characters.",
+        context: context,
+        animation: StyledToastAnimation.fade,
+        reverseAnimation: StyledToastAnimation.fade,
+        position: StyledToastPosition.center,
+        backgroundColor: mRed,
+        duration: Duration(seconds: 6),
+      );
       }else {
         _emailController.clear();
         _passwordController.clear();

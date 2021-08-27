@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:fitnessnote/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:fitnessnote/gtl.dart';
@@ -14,8 +15,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-
-  bool isActiveTabBarText = true;
 
   @override
   void initState() {
@@ -38,10 +37,21 @@ class _MainPageState extends State<MainPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             
             children: [
-              isActiveTabBarText ? mText20('Fitness Note', size: 25.0) : Container(),
+              mText20('Fitness Note', size: 25.0),
             ]
-
-          )
+          ),
+          actions: <Widget>[
+            mButton(
+              onPressed: () {
+                AuthService().logOut();
+              }, 
+              paddingTop: 10,
+              paddingBottom: 10,
+              paddingRight: 10,
+              paddingLeft: 10,
+              child: mIcon(Icons.supervised_user_circle)
+            ),
+          ],
         ),
 
         body: WorkoutsSubPage(),

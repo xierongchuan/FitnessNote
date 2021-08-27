@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitnessnote/domains/user.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fitnessnote/domains/person.dart';
+import 'package:fitnessnote/gtl.dart';
 
 class AuthService  {
   final FirebaseAuth _fAuth = FirebaseAuth.instance;
@@ -8,9 +8,10 @@ class AuthService  {
   Future logInWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential result = await _fAuth.signInWithEmailAndPassword(email: email, password: password);
-      User? user = result.user;
-      return UserD.fromFirebase(user!);
+      User user = result.user!;
+      return Person.fromFirebase(user);
     } catch (e) {
+      print(e);
       return null;
     }
   }
@@ -18,9 +19,10 @@ class AuthService  {
   Future registerWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential result = await _fAuth.createUserWithEmailAndPassword(email: email, password: password);
-      User? user = result.user;
-      return UserD.fromFirebase(user!);
+      User user = result.user!;
+      return Person.fromFirebase(user);
     } catch (e) {
+      print(e);
       return null;
     }
   }
@@ -29,8 +31,8 @@ class AuthService  {
     await _fAuth.signOut();
   }
 
-  Stream get currentUser {
+  Stream<Person> get currentUser {
     return _fAuth.authStateChanges()
-      .map((User? user) => user != null ? UserD.fromFirebase(user) : UserD.fromFirebase(user!));
+      .map((User? user) => user != null ? Person.fromFirebase(user) : Person.fromFirebase(user!));
   }
 }
